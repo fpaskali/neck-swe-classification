@@ -2,6 +2,9 @@
 
 This is a repository of the python code used in the paper [LINK].
 
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 ## Description ##
 
 ## User Manual ##
@@ -43,8 +46,7 @@ The number of columns is not limited, but additional columns should always be ad
 ### Scripts manual ####
 
 #### Summary Image Generator (summary_image_generator_RGB.py) ####
-
-This script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
+The script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
 
 Usage:
 
@@ -60,6 +62,22 @@ Usage:
 
     Example:
     python summary_image.py -csv data/dataset.csv
+    
+#### Hotelling's T² Test Map Generator (summary_image_generator_hotellings_t2_map.py) ####
+The script generate Hotelling's T² maps.
+
+Usage: 
+
+    summary_image_generator_hotellings_t2_map.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
+
+    Summary image generator
+
+    options:
+      -h, --help    show this help message and exit
+      -data DATA    CSV file with images info.
+      -r            Remove all images with less than 50 percent colored pixels.
+      -tasks TASKS  Read in the tasks from CSV file.
+      -inter        Use intersection of ROI instead of the largest ROI when cropping the images.
 
 #### SWE image feature extractor (swe_image_feature_extractor.py) ####
 The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or from horizontal segments.
@@ -81,7 +99,7 @@ Usage:
 
         Example usage:
         python various_feature_extractor.py -csv data/dataset.csv -roi
-
+        
 
 ### Notebooks ###
 The notebooks can be loaded in JupyterLab or Jupyter Notebook.
