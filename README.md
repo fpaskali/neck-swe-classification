@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/fpaskali/neck-swe-classification/main/preview/preview1.png" width="800" align="center" alt="Shear Wave Elastography"/>
 </p>
 
-This is a repository of the python code used in the paper [LINK]. All python scripts and notebooks, as well as extracted features, needed to reproduce the analysis are included.
+This is a repository of the python code used in the paper [LINK]. All python scripts and notebooks, as well as extracted features needed to reproduce the analysis are included.
 
 ## Abstract ##
 
@@ -48,8 +48,7 @@ The number of columns is not limited, but additional columns should always be ad
 ## Scripts ##
 
 ### Summary Image Generator (summary_image_generator_RGB.py) ###
-
-This script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
+The script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
 
 Usage:
 
@@ -66,9 +65,11 @@ Usage:
     Example:
     python summary_image.py -csv data/dataset.csv
 
+### Summary image Hotellings T² map generator (summary_image_generator_hotellings_t2_map.py)
+The script generates Hotelling's T² test map by analyzing the shear wave elastography images of two groups.
+
 ### SWE image feature extractor (swe_image_feature_extractor.py) ###
-The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or from horizontal segments.
-Additionally, the percentage of color pixels is calculated in each image and there is an option to remove images with less than 50% colored pixels.
+The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or/and from horizontal segments.
 
 Usage: 
 
@@ -95,4 +96,4 @@ The notebooks can be loaded in JupyterLab or Jupyter Notebook.
 Evaluation of six machine learning models with hyper-parameter optimization and nested cross-validation.
 
 ### Random Forest Best Features Extraction (RandomForestBestFeatures.ipynb) ####
-Extracting impurity base feature importances from cross-validation of Random Forest Classifier. 
+Extracting impurity base feature importance from cross-validation of Random Forest Classifier. 
