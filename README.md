@@ -68,6 +68,18 @@ Usage:
 ### Summary image Hotellings T² map generator (summary_image_generator_hotellings_t2_map.py)
 The script generates Hotelling's T² test map by analyzing the shear wave elastography images of two groups.
 
+Usage: 
+    summary_image_generator_hotellings_t2_map.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
+
+    Summary image generator
+
+    options:
+      -h, --help    show this help message and exit
+      -data DATA    CSV file with images info.
+      -r            Remove all images with less than 50 percent colored pixels.
+      -tasks TASKS  Read in the tasks from CSV file.
+      -inter        Use intersection of ROI instead of the largest ROI when cropping the images.
+
 ### SWE image feature extractor (swe_image_feature_extractor.py) ###
 The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or/and from horizontal segments.
 
