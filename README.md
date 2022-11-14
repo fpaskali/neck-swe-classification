@@ -69,6 +69,7 @@ Usage:
 The script generates Hotelling's T² test map by analyzing the shear wave elastography images of two groups.
 
 Usage: 
+
     summary_image_generator_hotellings_t2_map.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
 
     Summary image generator
