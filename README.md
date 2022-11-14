@@ -1,6 +1,7 @@
 # "Specification of neck muscle dysfunction through digital image analysis using machine learning"
-
-<img src="https://raw.githubusercontent.com/fpaskali/neck-swe-classification/main/preview/preview1.png" width="600" alt="Shear Wave Elastography"/>
+<p align=center>
+<img src="https://raw.githubusercontent.com/fpaskali/neck-swe-classification/main/preview/preview1.png" width="800" align="center" alt="Shear Wave Elastography"/>
+</p>
 
 This is a repository of the python code used in the paper [LINK]. All python scripts and notebooks, as well as extracted features, needed to reproduce the analysis are included.
 
