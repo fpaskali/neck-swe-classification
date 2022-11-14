@@ -1,11 +1,12 @@
 # "Specification of neck muscle dysfunction through digital image analysis using machine learning"
 
-This is a repository of the python code used in the paper [LINK].
+<img src="https://github.com/fpaskali/neck-swe-classification/preveiw/preview.png" alt="Shear Wave Elastography"/>
 
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+This is a repository of the python code used in the paper [LINK]. All python scripts and notebooks, as well as extracted features, needed to reproduce the analysis from the paper are included in this repository.
 
-## Description ##
+## Abstract ##
+
+Everyone has or will have experienced some degree of neck pain. Typically, neck pain is associated with the sensation of tense, tight, or stiff neck muscles. However, it is unclear whether the neck muscles are objectively stiffer with neck pain. The study used 1099 ultrasound elastography images (elastograms) obtained from 38 adult women, 20 with chronic neck pain and 18 asymptomatic. For training machine learning algorithms, 28 numerical characteristics were extracted from both the original and transformed shear wave velocity color-coded images as well from respective image segments. Overall, a total number of 323 distinct features were generated from the data. A supervised binary classification was performed, using six machine-learning algorithms. The random forest algorithm produced the most accurate model to distinguish elastograms of women with chronic neck pain from asymptomatic women with an AUC of 0.898.  When evaluating features that can be used as biomarkers for muscle dysfunction in neck pain, the region of the deepest neck muscles (M. multifidus) provided the most features to support the correct classification of elastograms. By constructing summary images and associated Hotelling’s T² maps, we enabled the visualization of group differences and their statistical confirmation.
 
 ## User Manual ##
 
@@ -43,10 +44,11 @@ The number of columns is not limited, but additional columns should always be ad
 | 2       | 2      | 1     | data/images/imageE005.BMP | data/images/imageQ005.BMP | data/images/imageE011.BMP | data/images/imageQ011.BMP | 
 | 2       | 3      | 1     | data/images/imageE006.BMP | data/images/imageQ006.BMP | data/images/imageE012.BMP | data/images/imageQ012.BMP | 
 
-### Scripts manual ####
+## Scripts ##
 
-#### Summary Image Generator (summary_image_generator_RGB.py) ####
-The script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
+### Summary Image Generator (summary_image_generator_RGB.py) ###
+
+This script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
 
 Usage:
 
@@ -62,24 +64,8 @@ Usage:
 
     Example:
     python summary_image.py -csv data/dataset.csv
-    
-#### Hotelling's T² Test Map Generator (summary_image_generator_hotellings_t2_map.py) ####
-The script generate Hotelling's T² maps.
 
-Usage: 
-
-    summary_image_generator_hotellings_t2_map.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
-
-    Summary image generator
-
-    options:
-      -h, --help    show this help message and exit
-      -data DATA    CSV file with images info.
-      -r            Remove all images with less than 50 percent colored pixels.
-      -tasks TASKS  Read in the tasks from CSV file.
-      -inter        Use intersection of ROI instead of the largest ROI when cropping the images.
-
-#### SWE image feature extractor (swe_image_feature_extractor.py) ####
+### SWE image feature extractor (swe_image_feature_extractor.py) ###
 The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or from horizontal segments.
 Additionally, the percentage of color pixels is calculated in each image and there is an option to remove images with less than 50% colored pixels.
 
@@ -99,13 +85,13 @@ Usage:
 
         Example usage:
         python various_feature_extractor.py -csv data/dataset.csv -roi
-        
 
-### Notebooks ###
+
+## Notebooks ##
 The notebooks can be loaded in JupyterLab or Jupyter Notebook.
 
-#### Machine Learning with Grid Search (MachineLearningWithGridSearch.ipynb) #### 
+### Machine Learning with Grid Search (MachineLearningWithGridSearch.ipynb) #### 
 Evaluation of six machine learning models with hyper-parameter optimization and nested cross-validation.
 
-#### Random Forest Best Features Extraction (RandomForestBestFeatures.ipynb) ####
+### Random Forest Best Features Extraction (RandomForestBestFeatures.ipynb) ####
 Extracting impurity base feature importances from cross-validation of Random Forest Classifier. 
