@@ -10,6 +10,7 @@ This is a repository of the python code used in the paper [LINK]. All python scr
 Everyone has or will have experienced some degree of neck pain. Typically, neck pain is associated with the sensation of tense, tight, or stiff neck muscles. However, it is unclear whether the neck muscles are objectively stiffer with neck pain. The study used 1099 ultrasound elastography images (elastograms) obtained from 38 adult women, 20 with chronic neck pain and 18 asymptomatic. For training machine learning algorithms, 28 numerical characteristics were extracted from both the original and transformed shear wave velocity color-coded images as well from respective image segments. Overall, a total number of 323 distinct features were generated from the data. A supervised binary classification was performed, using six machine-learning algorithms. The random forest algorithm produced the most accurate model to distinguish elastograms of women with chronic neck pain from asymptomatic women with an AUC of 0.898.  When evaluating features that can be used as biomarkers for muscle dysfunction in neck pain, the region of the deepest neck muscles (M. multifidus) provided the most features to support the correct classification of elastograms. By constructing summary images and associated Hotelling’s T² maps, we enabled the visualization of group differences and their statistical confirmation.
 
 ## User Manual ##
+For the analysis Python 3.10 was used.
 
 ### Installation of required packages ###
     pip install -r requirements.txt
