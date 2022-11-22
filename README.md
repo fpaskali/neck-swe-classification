@@ -1,4 +1,4 @@
-# "Specification of neck muscle dysfunction through digital image analysis using machine learning"
+# Specification of neck muscle dysfunction through digital image analysis using machine learning
 <p align=center>
 <img src="https://raw.githubusercontent.com/fpaskali/neck-swe-classification/main/preview/preview1.png" width="800" align="center" alt="Shear Wave Elastography"/>
 </p>
