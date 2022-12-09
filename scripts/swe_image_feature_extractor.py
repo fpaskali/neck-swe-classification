@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Dec 11 01:29:10 2019
+Created on Tue Nov 1 09:05:10 2022
 
-@author: filip
+@author: fpaskali
 """
 import csv, time, PIL, argparse
 import numpy as np
@@ -13,7 +13,7 @@ from skimage import io, color
 from skimage.filters import threshold_otsu
 from skimage.segmentation import clear_border
 from skimage.measure import label, regionprops
-from skimage.morphology import closing, square
+from skimage.morphology import closing, square, erosion
 from skimage.color import rgb2gray
 from skimage.filters import gabor_kernel
 from skimage.util import img_as_float
@@ -379,59 +379,59 @@ class FeatureExtractor(object):
 
     def grayscale_value_min(self, image):
         image = rgb2gray(image)
-        return np.fmin(image.flatten())
+        return np.nanmin(image.flatten())
 
     def grayscale_value_max(self, image):
         image = rgb2gray(image)
-        return np.fmax(image.flatten())
+        return np.nanmax(image.flatten())
     
     def gabor_kernel1_mean(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.1, theta=0))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=1/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.mean()
+        return np.nanmean(filtered)
         
     def gabor_kernel1_var(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.1, theta=0))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=1/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.var()
+        return np.nanvar(filtered)
     
     def gabor_kernel2_mean(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.4, theta=0))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=2/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.mean()
+        return np.nanmean(filtered)
         
     def gabor_kernel2_var(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.4, theta=0))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=2/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.var()
+        return np.nanvar(filtered)
     
     def gabor_kernel3_mean(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.1, theta=45))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=3/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.mean()
+        return np.nanmean(filtered)
         
     def gabor_kernel3_var(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.1, theta=45))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=3/4.*np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.var() 
+        return np.nanvar(filtered)
     
     def gabor_kernel4_mean(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.4, theta=45))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.mean()
+        return np.nanmean(filtered)
         
     def gabor_kernel4_var(self, image):
         image = img_as_float(rgb2gray(image))
-        gk = np.real(gabor_kernel(frequency=0.4, theta=45))
+        gk = np.real(gabor_kernel(frequency=0.1, theta=np.pi))
         filtered = ndi.convolve(image, gk, mode='wrap')
-        return filtered.var()
+        return np.nanvar(filtered)
 
     def measure_y_coor_relative(self, image):
         """
@@ -449,7 +449,7 @@ class FeatureExtractor(object):
         if depths:
             depths = np.array(depths)
             areas = np.array(areas)
-            weights = areas / areas.sum()
+            weights = areas / np.nansum(areas)
             
             weighted_mean = (depths * weights).sum()
             return weighted_mean/label_image.shape[0]
@@ -468,7 +468,7 @@ class FeatureExtractor(object):
             areas.append(region.area/image.size)
         
         if areas:
-            return np.mean(areas)
+            return np.nanmean(areas)
         else:
             return np.nan
     
@@ -490,7 +490,6 @@ class FeatureExtractor(object):
             self.extract_images_feature(self.image_mean, 'mean')
             self.extract_images_feature(self.image_median, 'median')
             self.extract_images_feature(self.image_sd, 'sd')
-            self.extract_images_feature(self.image_mad, 'mad')
             self.extract_images_feature(self.color_ry, 'red_pixels')
             self.extract_images_feature(self.color_g, 'green_pixels')
             self.extract_images_feature(self.color_b, 'blue_pixels')
@@ -523,7 +522,6 @@ class FeatureExtractor(object):
             self.extract_segments_feature(self.image_mean, 'mean', self.seg_num)
             self.extract_segments_feature(self.image_median, 'median', self.seg_num)
             self.extract_segments_feature(self.image_sd, 'sd', self.seg_num)
-            self.extract_segments_feature(self.image_mad, 'mad', self.seg_num)
             self.extract_segments_feature(self.color_ry, 'red_pixels', self.seg_num)
             self.extract_segments_feature(self.color_g, 'green_pixels', self.seg_num)
             self.extract_segments_feature(self.color_b, 'blue_pixels', self.seg_num)

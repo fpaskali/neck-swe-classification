@@ -48,26 +48,8 @@ The number of columns is not limited, but additional columns should always be ad
 
 ## Scripts ##
 
-### Summary Image Generator (summary_image_generator_RGB.py) ###
-The script generates mean, median, std and median absolute deviation(MAD) summary image, by applying the above operations to the RGB values of the shear wave elastography images for the both groups. 
-
-Usage:
-
-    summary_image.py [-h] [-csv CSV] [-r]
-    
-
-    Summary image generator
-
-    optional arguments:
-     -h, --help  show this help message and exit
-     -csv CSV    CSV file with images info.
-     -r          Remove all images with less than 50 percent colored pixels.
-
-    Example:
-    python summary_image.py -csv data/dataset.csv
-
-### Summary image Hotellings T² map generator (summary_image_generator_hotellings_t2_map.py)
-The script generates Hotelling's T² test map by analyzing the shear wave elastography images of two groups.
+### Summary image and Hotellings T² map generator (summary_image_and_hotellings_t2_map_generator.py)
+The script generates mean, median, and std summary images, together with Hotelling's T² test map, by analyzing the shear wave elastography images of two groups.
 
 Usage: 
 
