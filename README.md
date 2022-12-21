@@ -53,7 +53,7 @@ The script generates mean, median, and std summary images, together with Hotelli
 
 Usage: 
 
-    summary_image_generator_hotellings_t2_map.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
+    summary_image_and_hotellings_t2_map_generator.py [-h] [-data DATA] [-r] [-tasks TASKS] [-inter]
 
     Summary image generator
 
@@ -63,6 +63,9 @@ Usage:
       -r            Remove all images with less than 50 percent colored pixels.
       -tasks TASKS  Read in the tasks from CSV file.
       -inter        Use intersection of ROI instead of the largest ROI when cropping the images.
+    
+    Example usage:
+      python summary_image_and_hotellings_t2_map_generator.py -data data/dataset.csv -inter
 
 ### SWE image feature extractor (swe_image_feature_extractor.py) ###
 The script extracts features from the shear wave elastography images such as mean, median, number of red pixels etc., from the whole image or/and from horizontal segments.
@@ -81,8 +84,8 @@ Usage:
       -remove     Remove images with less than 50 percent colored pixels.
       -bottom     Extract features from bottom part only.
 
-        Example usage:
-        python various_feature_extractor.py -csv data/dataset.csv -roi
+    Example usage:
+      python swe_image_feature_extractor.py -csv data/dataset.csv -roi
 
 
 ## Notebooks ##
