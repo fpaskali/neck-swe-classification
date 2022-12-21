@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/fpaskali/neck-swe-classification/main/preview/preview1.png" width="800" align="center" alt="Shear Wave Elastography"/>
 </p>
 
-This is a repository of the python code used in the paper [LINK]. All python scripts and notebooks, as well as extracted features needed to reproduce the analysis are included.
+This is a repository of the python code used in the paper https://www.mdpi.com/2075-4418/13/1/7. All python scripts and notebooks, as well as extracted features needed to reproduce the analysis are included.
 
 ## Abstract ##
 
